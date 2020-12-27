@@ -44,7 +44,7 @@ public class Login extends JFrame {
         container.add(passwordLabel);
         container.add(textUserName);
         container.add(textPassword);
-        container.add(buttonRegister);
+        // container.add(buttonRegister);
         container.add(buttonLogin);
 
         frame.setVisible(true);
@@ -92,9 +92,5 @@ public class Login extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-
-        new Login();
-
-    }
+    
 }
