@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.FileDialog;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controller.BookAction;
+import util.TableExporter;
 import util.FrameOption;
 import util.MenuBar;
 
@@ -25,7 +29,7 @@ public class BookManage {
     private JTable table;
     private JScrollPane scrollPane;
 
-    private JButton buttonAdd, buttonDelete, buttonUpdate;
+    private JButton buttonAdd, buttonDelete, buttonUpdate, buttonExport;
     private JTextField textBookIsbn, textBookName, textBookAuthor;
     private JTextField textBookPrice, textPublish, textBookCategory;
     private JTextField textIntroduction;
@@ -88,6 +92,9 @@ public class BookManage {
         buttonUpdate = new JButton();
         setButtonUpdate();
 
+        buttonExport = new JButton();
+        setButtonExport();
+
         container.add(scrollPane);
         container.add(textBookIsbn);
         container.add(textBookName);
@@ -108,6 +115,7 @@ public class BookManage {
         container.add(buttonAdd);
         container.add(buttonDelete);
         container.add(buttonUpdate);
+        container.add(buttonExport);
 
         new FrameOption(frame);
     }
@@ -232,5 +240,26 @@ public class BookManage {
             }
         });
 
+    }
+
+    public void setButtonExport() {
+        buttonExport.setBounds(350, 390, 60, 25);
+        buttonExport.setText("导出");
+        buttonExport.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FileDialog fd = new FileDialog(frame, "保存图书信息", FileDialog.SAVE);
+                fd.setLocation(500, 350);
+                fd.setVisible(true);
+                String stringfile = fd.getDirectory() + fd.getFile() + ".txt";
+                try {
+                    TableExporter export = new TableExporter();
+                    export.exportTable(table, new File(stringfile));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
     }
 }
