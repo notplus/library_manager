@@ -27,4 +27,11 @@ public class ReturnRecordAction {
 
         return results;
     }
+
+    public List<Integer> getChartData() throws Exception {
+        ReturnRecordDao returnRecordDao=new ReturnRecordDao();
+        
+        return returnRecordDao.getChartData();
+
+    }
 }

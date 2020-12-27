@@ -14,6 +14,16 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.jfree.chart</groupId>
+            <artifactId>com.springsource.org.jfree.chart</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>RELEASE</version>

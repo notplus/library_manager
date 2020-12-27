@@ -26,4 +26,11 @@ public class BorrowRecordAction {
 
         return results;
     }
+
+    public List<Integer> getChartData() throws Exception {
+        BorrowRecordDao borrowRecordDao=new BorrowRecordDao();
+        
+        return borrowRecordDao.getChartData();
+
+    }
 }
