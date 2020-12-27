@@ -66,5 +66,13 @@ public class UserDao {
             return false;
     }
 
+    public int getUserId(String username) throws SQLException {
+        Connection connection = JdbcUtil.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement
+                .executeQuery("select user_id from user where user_name='" + username + "'");
+        resultSet.next();
+        return resultSet.getInt("user_id");
+    }
     
 }

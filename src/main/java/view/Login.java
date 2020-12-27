@@ -17,7 +17,9 @@ import javax.swing.WindowConstants;
 import javax.swing.JLabel;
 
 import controller.UserAction;
+import util.FrameOption;
 import util.UserRole;
+import util.KeyListener;
 import model.*;
 
 @SuppressWarnings("serial")
@@ -40,6 +42,9 @@ public class Login extends JFrame {
         textPassword.setBounds(210, 140, 180, 30);
         setButtonRegister();
         setButtonLogin();
+
+        new KeyListener(textUserName,buttonLogin);
+        new KeyListener(textPassword,buttonLogin);
 
         container.add(userLabel);
         container.add(passwordLabel);
@@ -79,6 +84,7 @@ public class Login extends JFrame {
                     if (userAction.isUserPwdCorrect(username, userpwd)) {
                         frame.setVisible(false);
                         UserRole.setIsAdmin(userAction.isAdmin(username));
+                        UserRole.id=userAction.getUserId(username);
                         new MainFrame();
                         System.out.println("login successful!");
                     } else {

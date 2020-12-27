@@ -27,4 +27,14 @@ public class UserAction {
         return result;
     }
 
+    public int getUserId(String username){
+        UserDao userDao = new UserDao();
+        int result = 0;
+        try {
+            result = userDao.getUserId(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

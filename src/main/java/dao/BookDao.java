@@ -30,10 +30,17 @@ public class BookDao {
         preparedStatement.execute();
     }
 
-    public List<Book> query() throws Exception {
+    public List<Book> query(int mode, String data) throws Exception {
         Connection connection = JdbcUtil.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from book");
+        if (mode == 1) // 通过书名查找
+            resultSet = statement.executeQuery("select * from book where book_name like '%" + data + "%'");
+        else if (mode == 2) // 通过ISBN查找
+            resultSet = statement.executeQuery("select * from book where book_isbn = " + data + "'");
+        else if (mode == 3) // 通过作者查找
+            resultSet = statement.executeQuery("select * from book where book_author like '%" + data + "%'");
+
         List<Book> bookList = new ArrayList<Book>();
         Book book = null;
         while (resultSet.next()) {
@@ -76,5 +83,6 @@ public class BookDao {
         preparedStatement.execute();
 
     }
+
 
 }
