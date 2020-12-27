@@ -12,6 +12,7 @@ import view.BookInfo;
 import view.BookQuery;
 import view.BorrowInfo;
 import view.ReturnInfo;
+import view.UserInfo;
 import util.UserRole;
 
 public class MenuBar {
@@ -42,6 +43,10 @@ public class MenuBar {
         menuItemReturnInfo=new JMenuItem();
         setMenuItemReturnInfo(frame);
         menuBar.add(menuItemReturnInfo);
+
+        menuItemUserInfo=new JMenuItem();
+        setMenuItemUserInfo(frame);
+        menuBar.add(menuItemUserInfo);
 
         frame.setJMenuBar(menuBar);
     }
@@ -89,6 +94,18 @@ public class MenuBar {
                 // frame.setVisible(false);
                 frame.dispose();
                 new ReturnInfo();
+            }
+        });
+    }
+
+    private void setMenuItemUserInfo(JFrame frame){
+        menuItemUserInfo.setText("个人信息");
+        menuItemUserInfo.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                // frame.setVisible(false);
+                frame.dispose();
+                new UserInfo();
             }
         });
     }

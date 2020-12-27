@@ -3,24 +3,18 @@ package view;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.GridLayout;
-import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import javax.swing.JLabel;
 
 import controller.UserAction;
-import util.FrameOption;
-import util.UserRole;
 import util.KeyListener;
-import model.*;
+import util.UserRole;
 
 @SuppressWarnings("serial")
 public class Login extends JFrame {

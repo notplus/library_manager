@@ -2,6 +2,7 @@ package controller;
 
 import dao.UserDao;
 import model.User;
+import util.UserRole;
 
 public class UserAction {
 
@@ -34,6 +35,18 @@ public class UserAction {
             result = userDao.getUserId(username);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean updateUserInfo(String username, String password){
+        UserDao userDao = new UserDao();
+        boolean result = true;
+        try {
+            userDao.updateUser(UserRole.id,username, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result=false;
         }
         return result;
     }

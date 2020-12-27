@@ -12,14 +12,14 @@ import model.User;
 import util.JdbcUtil;
 
 public class UserDao {
-    public void updateUser(User user, String userName, String password) throws SQLException {
+    public boolean updateUser(int user_id, String userName, String password) throws SQLException {
         Connection connection = JdbcUtil.getConnection();
-        String sql = "updat user" + "set user_name=?,user_pwd=?" + "where user_id=?";
+        String sql = "update user" + " set user.user_name=?,user.user_pwd=?" + " where user.user_id=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, userName);
         preparedStatement.setString(2, password);
-        preparedStatement.setInt(3, user.getId());
-        preparedStatement.execute();
+        preparedStatement.setInt(3, user_id);
+        return preparedStatement.execute();
     }
 
     public List<User> query() throws Exception {

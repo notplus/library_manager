@@ -1,28 +1,20 @@
 package view;
 
-import java.awt.AWTEvent;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 import controller.BookAction;
 import util.FrameOption;
-import util.MenuBar;
 import util.KeyListener;
+import util.MenuBar;
 
 public class BookQuery {
     private JFrame frame = new JFrame("图书馆");
