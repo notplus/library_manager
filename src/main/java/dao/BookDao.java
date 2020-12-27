@@ -15,14 +15,15 @@ public class BookDao {
     public void addBook(Book book) throws Exception {
         Connection connection = JdbcUtil.getConnection();
         String sql = "insert into book "
-                + "(book_id,book_isbn,book_name,book_price,book_author,book_publish,book_category,book_introduction,is_lend)"
-                + "values(" + "?,?,?,?,?,?,?,?,?)";
+                + "(book_isbn,book_name,book_price,book_author,book_publish,book_category,book_introduction,is_lend)"
+                + "values(" + "?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, book.getID());
-        preparedStatement.setString(2, book.getISBN());
-        preparedStatement.setString(3, book.getBookName());
-        preparedStatement.setFloat(4, book.getPrice());
-        preparedStatement.setString(5, book.getAuthor());
+        // preparedStatement.setInt(1, book.getID());
+        preparedStatement.setString(1, book.getISBN());
+        preparedStatement.setString(2, book.getBookName());
+        preparedStatement.setFloat(3, book.getPrice());
+        preparedStatement.setString(4, book.getAuthor());
+        preparedStatement.setString(5,book.getPublishedHouse());
         preparedStatement.setString(6, book.getBookCategory());
         preparedStatement.setString(7, book.getBookIntroduction());
         preparedStatement.setString(8, Boolean.toString(book.getIsLend()));
@@ -59,30 +60,30 @@ public class BookDao {
         return bookList;
     }
 
-    public void deleteBook(Book book) throws SQLException {
+    public void deleteBook(int id) throws SQLException {
         Connection connection = JdbcUtil.getConnection();
         String sql = "delete from book where book_id =?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, book.getID());
+        preparedStatement.setInt(1, id);
         preparedStatement.execute();
     }
 
     public void updateBook(Book book) throws SQLException {
         Connection connection = JdbcUtil.getConnection();
-        String sql = "update book "
-                + "set book_id=?,set book_isbn=?,set book_name=?,set book_price=?,set book_author=?,set book_publish=?,set book_category=?,set book_introduction=?,set is_lend=?)";
+        String sql = "update book set book.book_isbn=?, book.book_name=?, book.book_price=?,  book.book_author=?,"
+                + "  book.book_publish=?,  book.book_category=?,  book.book_introduction=?, book.is_lend=? where book.book_id=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, book.getID());
-        preparedStatement.setString(2, book.getISBN());
-        preparedStatement.setString(3, book.getBookName());
-        preparedStatement.setFloat(4, book.getPrice());
-        preparedStatement.setString(5, book.getAuthor());
+        preparedStatement.setString(1, book.getISBN());
+        preparedStatement.setString(2, book.getBookName());
+        preparedStatement.setFloat(3, book.getPrice());
+        preparedStatement.setString(4, book.getAuthor());
+        preparedStatement.setString(5, book.getPublishedHouse());
         preparedStatement.setString(6, book.getBookCategory());
         preparedStatement.setString(7, book.getBookIntroduction());
         preparedStatement.setString(8, Boolean.toString(book.getIsLend()));
+        preparedStatement.setInt(9, book.getID());
         preparedStatement.execute();
 
     }
-
 
 }

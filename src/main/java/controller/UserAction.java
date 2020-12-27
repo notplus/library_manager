@@ -1,7 +1,6 @@
 package controller;
 
 import dao.UserDao;
-import model.User;
 import util.UserRole;
 
 public class UserAction {

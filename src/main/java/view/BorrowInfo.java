@@ -39,7 +39,7 @@ public class BorrowInfo {
             table = new JTable(results, columnNames);
             scrollPane = new JScrollPane(table);
             scrollPane.setViewportView(table);
-            scrollPane.setBounds(20, 80, 760, 190);
+            scrollPane.setBounds(20, 30, 760, 230);
 
         } catch (Exception e) {
             e.printStackTrace();

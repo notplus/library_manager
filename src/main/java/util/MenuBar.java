@@ -3,17 +3,15 @@ package util;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import view.BookInfo;
+import view.BookManage;
 import view.BookQuery;
 import view.BorrowInfo;
 import view.ReturnInfo;
 import view.UserInfo;
-import util.UserRole;
 
 public class MenuBar {
     private JMenuBar menuBar;
@@ -57,7 +55,7 @@ public class MenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new BookInfo();
+                new BookManage();
             }
         });
     }

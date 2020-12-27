@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import util.FrameOption;
 import controller.UserAction;
 import util.MenuBar;
+import util.KeyListener;
 
 public class UserInfo {
     JFrame frame = new JFrame("图书馆");
@@ -48,6 +49,7 @@ public class UserInfo {
                     JOptionPane.showMessageDialog(null, "修改失败", "错误", JOptionPane.PLAIN_MESSAGE);
             }
         });
+        new KeyListener(userpwdText,buttonUpdate);
 
         container.add(userNameLabel);
         container.add(userNameText);
